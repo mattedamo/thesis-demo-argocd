@@ -42,12 +42,12 @@ def main():
         if manifest_name not in list_manifests:
             if code_branch == "master":
                 path = "kustomize/overlays/prod/"
-                metadata_name = "prod-" + c
+                metadata_name = app_name+"-prod-" + c
                 namespace = app_name+"-prod"
 
             else:
                 path = "kustomize/overlays/"+tier+"/"+code_branch+"/"
-                metadata_name = tier+"-"+code_branch_list[0]+"-"+code_branch_list[1] + "-" + c
+                metadata_name = app_name+"-"+tier+"-"+code_branch_list[0]+"-"+code_branch_list[1] + "-" + c
                 namespace = app_name+"-"+tier+"-"+code_branch_list[0]+"-"+code_branch_list[1]
             
             #creo il file dentro a manifests/ con come name il manifest_name
