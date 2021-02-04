@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: thesis-demo
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: thesis-demo
+  project: default
+  source:
+    path: manifests/thesis-demo
+    repoURL: https://github.com/mattedamo/thesis-demo-argocd.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
