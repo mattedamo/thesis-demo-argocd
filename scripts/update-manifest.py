@@ -23,9 +23,9 @@ def main():
     for c in clusters:
         #build metatata name
         if code_branch == "master":
-            manifest_name = "prod" + "-" + c + ".yaml"
+            manifest_name = app_name+"-prod" + "-" + c + ".yaml"
         else:
-            manifest_name = tier+"-"+code_branch_list[0]+"-"+code_branch_list[1] +"-" + c + ".yaml"
+            manifest_name = app_name+"-"+tier+"-"+code_branch_list[0]+"-"+code_branch_list[1] +"-" + c + ".yaml"
         if manifest_name in os.listdir(working_dir):
             list_manifests_to_delete.append(manifest_name)
 
