@@ -32,6 +32,18 @@ def main():
     for man in list_manifests_to_delete:
         os.remove(working_dir+man)
     
+    if code_branch == "master":
+        manifest_name_pattern = "prod-" 
+    else:
+        manifest_name_pattern = tier+"-"+code_branch_list[0]+"-"+code_branch_list[1]
+    toRemove = []
+    for f in os.listdir("manifests/"+app_name+"/"):
+        if manifest_name_pattern in f:
+            toRemove.append(f)
+
+    for ele in toRemove:
+        os.remove("manifests/"+app_name+"/"+ele)
+    
     list_manifests = os.listdir(working_dir)
     for c in clusters:
         if code_branch == "master":
