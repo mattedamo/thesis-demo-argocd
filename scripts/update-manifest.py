@@ -35,7 +35,7 @@ def main():
     list_manifests = os.listdir(working_dir)
     for c in clusters:
         if code_branch == "master":
-            manifest_name = prod-" + c + ".yaml" 
+            manifest_name = "prod-" + c + ".yaml" 
         else:
             manifest_name = tier+"-"+code_branch_list[0]+"-"+code_branch_list[1] +"-" + c + ".yaml"
         
